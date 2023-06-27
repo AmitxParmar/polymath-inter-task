@@ -4,7 +4,7 @@ import MarqueeIcons from "./MarqueeIcons";
 const LandingPage = () => {
   return (
     <div className="lg:py-12 mb-24 lg:mb-0 md:px-10 lg:px-[134px] mx-auto lg:max-w-screen-xl py-3 flex flex-col lg:flex-row md:gap-x-12 ">
-      <div className="relative py-12 px-6 md:px-0 lg:h-[500px] lg:w-[500px] lg:min-w-[500px] max-w-[500px] mx-auto flex flex-col justify-center">
+      <div className="relative py-12 px-6 md:px-0 lg:h-[500px] lg:w-[500px] lg:min-w-[550px] max-w-[500px] mx-auto flex flex-col justify-center">
         
           <h1 className="md:min-w-full text-4xl mb-6 md:min-h-[130px]  md:text-[3rem] md:leading-[59.52px] font-grotesk font-bold tracking-[-0.02em]">
             Get discovered by your{" "}
