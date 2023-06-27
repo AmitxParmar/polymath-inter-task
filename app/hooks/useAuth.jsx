@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useContext, createContext, useEffect, useState } from "react";
 import {
   GoogleAuthProvider,
@@ -7,21 +7,23 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+import { useRouter } from "next/navigation";
 import { auth } from "@/app/lib/firebase-config";
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
+  const router = useRouter();
   const [user, setUser] = useState({});
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
-    // signInWithPopup(auth, provider);
-    signInWithRedirect(auth, provider);
+    signInWithPopup(auth, provider).then(() => router.push("/dashboard"));
+    //signInWithRedirect(auth, provider);
   };
 
   const logOut = () => {
-    signOut(auth);
+    signOut(auth).then(() => router.push("/"));
   };
 
   useEffect(() => {

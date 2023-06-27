@@ -1,7 +1,10 @@
-import Header from "./components/Header";
+"use client";
 import "./globals.css";
 import { Inter } from "next/font/google";
+
 import { AuthContextProvider } from "./hooks/useAuth";
+import Header from "./components/Header";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {

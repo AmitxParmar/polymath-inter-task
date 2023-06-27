@@ -11,7 +11,6 @@ const LandingPage = () => {
             <span className="text-[#ED4A60]">dream companies</span>
           </h1>
         
-        
           <p className="md:max-w-[450px] tracking-[-0.015em] !font-inter font-normal leading-[1.75] text-default text-[1.125rem]">
             A new age platform helping students unlock their dream career with
             proof of skills and experience
@@ -20,7 +19,6 @@ const LandingPage = () => {
       </div>
 
       <div
-        
         className="fade-x my-auto overflow-visible flex-none shrink-0 lg:max-w-[450px] md:max-h-[400px] lg:max-h-[500px] lg:w-[500px] min-w-[320px] bg-transparent flex flex-col gap-y-[39px]"
       >
         <MarqueeIcons />
