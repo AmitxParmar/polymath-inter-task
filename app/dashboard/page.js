@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../lib/firebase-config";
 import { UserAuth } from "../hooks/useAuth";
 import { useRouter } from "next/navigation";
 
@@ -10,13 +12,15 @@ const Dashboard = () => {
 
   useEffect(() => {
     !user ? router.push("/") : null;
-    fetch("https://jsonplaceholder.typicode.com/todos/1")
+    fetch("https://jsonplaceholder.typicode.com/todos")
       .then((response) => response.json())
       .then((json) => setTodos(json));
   }, []);
 
+  const collectionRef = collection(db, "todos");
+
   const handleSave = async (id) => {
-    const task = todos.find((todo) => item.id === id);
+    const task = todos.find((todo) => todo.id === id);
 
     try {
       const docRef = await addDoc(collectionRef, task);
@@ -27,16 +31,15 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen py-12 px-6">
+    <div className="min-h-screen  py-12 px-6">
       Hello, {user?.displayName}
-      <div className="bg-gray-500/30 rounded-lg">
+      <div className="bg-gray-500/30 space-y-3 py-4 rounded-lg">
         {todos?.map((todo) => (
-          <div
-            className="bg-gray-100"
-            onClick={() => handleSave(todo.id)}
-            key={todo.id}
-          >
-            <h3>{todo.title}</h3>
+          <div className="bg-gray-100" key={todo.id}>
+            <div className="grid grid-flow-col">
+              <h3>{todo.title}</h3>
+              <button className="bg-black hover:bg-white hover:text-black text-white max-w-[100px]" onClick={() => handleSave(todo.id)}>Save</button>
+            </div>
           </div>
         ))}
       </div>
