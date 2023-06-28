@@ -35,19 +35,29 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen  py-12 px-6">
+    <div className="min-h-screen py-12 px-6">
       <ToastContainer />
       Hello, {user?.displayName}
-      <div className="bg-gray-500/30 grid grid-cols-4 gap-4 space-y-3 py-4 px-5 rounded-lg">
+      <div className="bg-gray-500/30 grid grid-cols-4 auto-rows-auto gap-4 space-y-3 py-12 px-5 rounded-lg">
         {todos?.map((todo) => (
           <div
-            className="bg-gray-100 hover:bg-gray-200 hover:cursor-pointer"
+            className="bg-gray-100 px-4 py-4 shadow-xl rounded-2xl hover:bg-gray-200 hover:scale-105 duration-500 transition-all hover:cursor-pointer flex flex-col justify-around"
             key={todo.id}
           >
-            <div className="grid grid-flow-col">
-              <h3>{todo.title}</h3>
+            <div className="flex flex-col ">
+              <div className="flex flex-col justify-around gap-y-3 px-4 py-3 border border-[#ccc] rounded-lg">
+                <h6 className="text-sm">{todo.title}</h6>
+                <div className={`${todo.completed ? 'bg-green-200': "bg-red-300" } rounded-full px-4 p-1 text-xs w-fit` }>
+                  {todo.completed ? (
+                    <p className="">Completed!</p>
+                  ) : (
+                    <p className="">Not Completed!!</p>
+                  )}
+                </div>
+              </div>
+
               <button
-                className="bg-black rounded-sm hover:bg-white hover:text-black text-white max-w-[100px]"
+                className="bg-black rounded-lg hover:bg-white hover:text-black text-white border border-[#ccc]"
                 onClick={() => handleSave(todo.id)}
               >
                 Save
